@@ -1,0 +1,1 @@
+# plugins-meta-generator-and-version-info-remover
