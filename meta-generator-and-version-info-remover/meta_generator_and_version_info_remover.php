@@ -7,7 +7,7 @@ Text Domain: meta-generator-and-version-info-remover
 Author: Pankaj Kumar Mondal
 Author URI: http://pankajmondal.com
 Tags: meta generator, security, remove, version, meta
-Version: 16.0
+Version: 17.0
 Requires at least: 3.0
 Requires PHP: 5.3
 License: GPLv2 or later
@@ -70,6 +70,7 @@ class Meta_generator_and_version_info_remover {
         add_settings_field('pkm_layerslider_generator_remover_enable_checkbox', __('Remove LayerSlider generator tag (Applicable if Kreatura LayerSlider Plugin is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_layerslider_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
         add_settings_field('pkm_sitekitbygoogle_generator_remover_enable_checkbox', __('Remove Site Kit by Google generator tag (Applicable if Site Kit by Google Plugin is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_sitekitbygoogle_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
         add_settings_field('pkm_divi_generator_remover_enable_checkbox', __('Remove Divi theme meta generator tag (Applicable if Divi theme is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_divi_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
+        add_settings_field('pkm_elementor_generator_remover_enable_checkbox', __('Remove Elementor Website Builder meta generator tag (Applicable if Elementor Website Builder is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_elementor_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
         add_settings_field('pkm_image_placeholders_generator_remover_enable_checkbox', __('Remove Image Placeholders meta generator tag (Applicable if Image Placeholders plugin is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_image_placeholders_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
         add_settings_field('pkm_performance_lab_generator_remover_enable_checkbox', __('Remove Performance Lab meta generator tag (Applicable if Performance Lab plugin is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_performance_lab_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
         add_settings_field('pkm_performant_translations_generator_remover_enable_checkbox', __('Remove Performant Translations meta generator tag (Applicable if Performant Translations plugin is used)', 'meta-generator-and-version-info-remover'), array($this, 'pkm_performant_translations_generator_remover_checkbox_setting'), __FILE__, 'pkm_meta_generator_remover_section');
@@ -152,6 +153,12 @@ class Meta_generator_and_version_info_remover {
     public function pkm_divi_generator_remover_checkbox_setting() {
         ?>
         <input name="meta_generator_and_version_info_remover_options[pkm_divi_generator_remover_enable_checkbox]" type="checkbox" value="1"<?php checked( 1 == (isset($this->options['pkm_divi_generator_remover_enable_checkbox']) && $this->options['pkm_divi_generator_remover_enable_checkbox']) ); ?> />
+        <?php 
+    }
+
+    public function pkm_elementor_generator_remover_checkbox_setting() {
+        ?>
+        <input name="meta_generator_and_version_info_remover_options[pkm_elementor_generator_remover_enable_checkbox]" type="checkbox" value="1"<?php checked( 1 == (isset($this->options['pkm_elementor_generator_remover_enable_checkbox']) && $this->options['pkm_elementor_generator_remover_enable_checkbox']) ); ?> />
         <?php 
     }
 
@@ -422,6 +429,13 @@ if ( isset($options['pkm_divi_generator_remover_enable_checkbox']) && ($options[
 }
 
 /**
+ * Hook into the Elementor Website Builder meta generator.
+ */
+if ( isset($options['pkm_elementor_generator_remover_enable_checkbox']) && ($options['pkm_elementor_generator_remover_enable_checkbox'] == 1) ) {
+    add_filter('elementor/frontend/meta_generator_tag', '__return_false');
+}
+
+/**
  * Hook into the Image Placeholders plugin meta generator.
  */
 if ( isset($options['pkm_image_placeholders_generator_remover_enable_checkbox']) && ($options['pkm_image_placeholders_generator_remover_enable_checkbox'] == 1) ) {
@@ -660,6 +674,7 @@ function meta_generator_and_version_info_remover_defaults() {
         'pkm_layerslider_generator_remover_enable_checkbox'     => 1,
         'pkm_sitekitbygoogle_generator_remover_enable_checkbox' => 1,
         'pkm_divi_generator_remover_enable_checkbox'            => 0,
+        'pkm_elementor_generator_remover_enable_checkbox'       => 0,
         'pkm_image_placeholders_generator_remover_enable_checkbox' => 1,
         'pkm_performance_lab_generator_remover_enable_checkbox' => 1,
         'pkm_performant_translations_generator_remover_enable_checkbox' => 1,

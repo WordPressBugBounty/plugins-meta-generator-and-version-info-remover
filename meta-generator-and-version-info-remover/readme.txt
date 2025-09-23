@@ -5,8 +5,8 @@ Author URI: http://pankajmondal.com
 Donate link: https://www.paypal.me/pankajkumarmondal
 Tags: meta generator, security, remove, version, meta
 Requires at least: 3.0
-Tested up to: 6.6
-Stable tag: 16.0
+Tested up to: 6.8
+Stable tag: 17.0
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,7 @@ You can enable/disable each removal options from admin dashboard:
 <li>Remove LayerSlider Meta Generator Tag</li>
 <li>Remove Site Kit by Google Meta Generator Tag</li>
 <li>Remove Divi Theme Meta Generator Tag (By default disabled; if required enable from Settings)</li>
+<li>Remove Elementor Website Builder Meta Generator Tag (By default disabled; if required enable from Settings)</li>
 <li>Remove Image Placeholders Meta Generator Tag</li>
 <li>Remove Performance Lab Meta Generator Tag</li>
 <li>Remove Performant Translations Meta Generator Tag</li>
@@ -79,6 +80,9 @@ Please go to plugin settings: Dashboard > Settings > Meta Generator and Version 
 3. View source demo
 
 == Changelog ==
+
+= 17.0 =
+* Added: Elementor Website Builder Meta Generator Removal.
 
 = 16.0 =
 * Added: Image Placeholders Meta Generator Removal.
