@@ -6,7 +6,7 @@ Donate link: https://www.paypal.me/pankajkumarmondal
 Tags: meta generator, security, remove, version, meta
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 17.0
+Stable tag: 17.1
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,9 @@ Please go to plugin settings: Dashboard > Settings > Meta Generator and Version 
 3. View source demo
 
 == Changelog ==
+
+= 17.1 =
+* Updated: Elementor Website Builder Meta Generator Removal code updated.
 
 = 17.0 =
 * Added: Elementor Website Builder Meta Generator Removal.

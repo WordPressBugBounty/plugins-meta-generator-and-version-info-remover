@@ -7,7 +7,7 @@ Text Domain: meta-generator-and-version-info-remover
 Author: Pankaj Kumar Mondal
 Author URI: http://pankajmondal.com
 Tags: meta generator, security, remove, version, meta
-Version: 17.0
+Version: 17.1
 Requires at least: 3.0
 Requires PHP: 5.3
 License: GPLv2 or later
@@ -433,6 +433,14 @@ if ( isset($options['pkm_divi_generator_remover_enable_checkbox']) && ($options[
  */
 if ( isset($options['pkm_elementor_generator_remover_enable_checkbox']) && ($options['pkm_elementor_generator_remover_enable_checkbox'] == 1) ) {
     add_filter('elementor/frontend/meta_generator_tag', '__return_false');
+    add_action('init', function() {
+        if ( did_action('elementor/loaded') ) {
+            $generator_module = \Elementor\Plugin::$instance->modules_manager->get_modules('generator-tag');
+            if ( $generator_module ) {
+                remove_action('wp_head', [ $generator_module, 'render_generator_tag' ]);
+            }
+        }
+    });
 }
 
 /**
